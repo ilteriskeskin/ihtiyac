@@ -82,10 +82,23 @@ def home():
 def about():
     return render_template('about.html')
 
+@app.route('/need/<string:id>')
+def need(id):
+    need = Need.query.filter_by(id=id)
+    if session['logged_in']:
+        return render_template('need.html', need = need)
+    else:
+        return render_template('need.html')
+
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    return render_template('dashboard.html')
+    email = session['email']
+    needs = Need.query.filter_by(email=email)
+    if session['logged_in']:
+        return render_template('dashboard.html', needs = needs)
+    else:
+        return render_template('dashboard.html')
 
 @app.route('/needs')
 def needs():

@@ -10,5 +10,39 @@
     <hr>
 
     <a href="/addneed" class="btn btn-danger">İhtiyaç Ekle</a>
+    <br><br>
+    {% if needs %}
+
+    {% for need in needs %}
+    
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Başlık</th>
+            <th scope="col">Tarih</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">{{ need.id }}</th>
+            <td><a href="/need/{{ need.id}}">{{ need.title }}</a></td>
+            <td>{{ need.created_date }}</td>
+            <td><a href="/edit/{{ need.id }}" class="btn btn-danger">Güncelle</a></td>
+            <td><a href="/delete/{{ need.id }}" class="btn btn-danger">Sil</a></td>
+          </tr>
+        </tbody>
+      </table>
+    {% endfor %}
+
+    {% else %}
+
+        <div class="alert alert-danger">
+            Herhangi bir ihtiyaç bulunmuyor.
+        </div>
+
+    {% endif %}
 
 {% endblock body %}

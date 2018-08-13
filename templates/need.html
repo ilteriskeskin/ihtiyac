@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+{% if need %}
+
+<h4>{{ need.title }}</h4>
+
+{% else %}
+
+    <div class="alert alert-danger">
+        Böyle bir ihtiyaç bulunmuyor.
+    </div>
+
+{% endif %}
+
+{% endblock body %}
