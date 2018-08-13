@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+{% from "includes/formhelpers.html" import render_field %}
+
+<h3>
+    <strong>
+        İhtiyacını Ekle
+    </strong>
+</h3>
+<hr>
+
+<form method="POST">
+
+    {{ render_field(form.title, class="form-control") }}
+    {{ render_field(form.content, class="form-control") }}
+    {{ render_field(form.address, class="form-control") }}
+    {{ render_field(form.email, class="form-control") }}
+    {{ render_field(form.phone, class="form-control", placeholder='5xxxxxxxxx') }}
+    {{ render_field(form.category, class="form-control", placeholder='Öğrenci Kulübü, Bireysel vb.') }}
+    {{ render_field(form.iban, class="form-control", placeholder='Paranızın yatmasını istediğini IBAN numarasını giriniz') }}
+
+    <button type="submit" class="btn btn-danger">İhtiyaç Ekle</button>
+</form>
+
+{% endblock body %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<h3>
+    <strong>
+        İhtiyaçlar
+    </strong>
+</h3>
+<hr>
+
+{% if needs %}
+
+    <ul class="list-group">
+        {% for need in needs %}
+            <li class="list-group-item"><a href="#">{{ need.title }}</a></li>
+        {% endfor %}
+    </ul>
+
+{% else %}
+
+    <div class="alert alert-danger">
+        Herhangi bir ihtiyaç bulunmuyor.
+    </div>
+
+{% endif %}
+
+{% endblock body %}

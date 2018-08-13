@@ -5,8 +5,12 @@
           <a class="p-2 text-dark" href="/about">Hakkında</a>
           <a class="p-2 text-dark" href="#">Yardımlar</a>
         </nav>
-        <a class="btn btn-outline-primary" href="/register">Kayıt Ol</a>
-        <a class="btn btn-outline-primary" href="/login/">Giriş Yap</a>
-        <a class="btn btn-outline-primary" href="/logout">Çıkış</a>
+        {% if session['logged_in'] %}
+          <a class="p-2 text-dark" href="/dashboard">Kontrol Paneli</a>
+          <a class="p-2 text-dark" href="/logout">Çıkış</a>
+        {% else %}
+          <a class="btn btn-outline-primary" href="/register">Kayıt Ol</a>
+          <a class="btn btn-outline-primary" href="/login/">Giriş Yap</a>
+        {% endif %}
       </div>
   
