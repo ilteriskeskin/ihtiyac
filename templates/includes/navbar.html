@@ -1,16 +1,36 @@
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-        <h5 class="my-0 mr-md-auto font-weight-normal">Ali İlteriş Keskin</h5>
-        <nav class="my-2 my-md-0 mr-md-3">
-          <a class="p-2 text-dark" href="/">Anasayfa</a>
-          <a class="p-2 text-dark" href="/about">Hakkında</a>
-          <a class="p-2 text-dark" href="/needs">Yardımlar</a>
-        </nav>
-        {% if session['logged_in'] %}
-          <a class="p-2 text-dark" href="/dashboard">Kontrol Paneli</a>
-          <a class="p-2 text-dark" href="/logout">Çıkış</a>
-        {% else %}
-          <a class="btn btn-outline-primary" href="/register">Kayıt Ol</a>
-          <a class="btn btn-outline-primary" href="/login/">Giriş Yap</a>
-        {% endif %}
-      </div>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Anasayfa</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/about">Hakkında</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/needs">Yardım Listesi</a>
+            </li>
+            {% if session['logged_in'] %}
+              <li class="nav-item active">
+                <a class="nav-link" href="/dashboard">Kontrol Paneli</a>
+              </li>
+              <li class="nav-item active">
+                  <a class="nav-link" href="/logout">Çıkış</a>
+              </li>
+            {% else %}
+              <li class="nav-item active">
+                <a class="nav-link" href="/register">Kayıt Ol</a>
+              </li>
+              <li class="nav-item active">
+                  <a class="nav-link" href="/login">Giriş Yap</a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+  
   
