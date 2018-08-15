@@ -6,15 +6,26 @@
             Kontrol Paneli
         </strong>
     </h3>
-    <small>Hoşgeldin, {{ session['email'] }}</small>
+    <small>
+      Hoşgeldin, {{ session['email'] }}
+      <ul>
+        <li>
+          Karışıklığı ve karmaşıklığı önlemek adına yalnızca 1 adet ihtiyaç girebilirsin.
+        </li>
+        <li>
+          Birden fazla ihtiyaç girmeye çalıştığında sistem buna müsaade etmeyecektir.
+        </li>
+        <li>
+          Anlayışın için teşekkür ederiz :)
+        </li>
+      </ul>
+    </small>
     <hr>
+    
+    <a href="/addneed" class="btn btn-danger">İhtiyaç Ekle</a>
 
     <br><br>
 
-    {% if need %}
-
-    {% for need in needs %}
-    
     <table class="table">
         <thead>
           <tr>
@@ -26,24 +37,15 @@
           </tr>
         </thead>
         <tbody>
+          {% for need in needs %}
           <tr>
             <th scope="row">{{ need.id }}</th>
             <td><a href="/need/{{ need.id}}">{{ need.title }}</a></td>
             <td>{{ need.created_date }}</td>
             <td><a href="/delete/{{ need.id }}" class="btn btn-danger">Sil</a></td>
           </tr>
+          {% endfor %}
         </tbody>
       </table>
-    {% endfor %}
-
-    {% else %}
-
-    <div class="alert alert-danger">
-        Herhangi bir ihtiyaç bulunmuyor.
-    </div>
-    <br>
-    <a href="/addneed" class="btn btn-danger">İhtiyaç Ekle</a>
-
-    {% endif %}
 
 {% endblock body %}

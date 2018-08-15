@@ -5,6 +5,7 @@ from wtforms.validators import DataRequired
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
 from datetime import datetime
+from flask import send_from_directory
 
 # Kullanıcı Giriş Decorator'ı
 
@@ -84,7 +85,7 @@ def about():
 
 @app.route('/need/<string:id>')
 def need(id):
-    need = Need.query.filter_by(id=id).first()
+    need = Need.query.filter_by(id = id).first()
     return render_template('need.html', need = need)
 
 @app.route('/dashboard')
@@ -175,6 +176,12 @@ def delete(id):
     db.session.delete(need)
     db.session.commit()
     return redirect(url_for('dashboard'))
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico')
 
 if __name__ == '__main__':
     db.create_all()

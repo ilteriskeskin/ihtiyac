@@ -4,7 +4,35 @@
 
 {% if need %}
 
-<h4>{{ need.title }}</h4>
+<small>
+    Merhaba, bu sayfada eklenen ihtiyacın detaylı bilgisini bulabilirsin.
+</small>
+<hr>
+<h4 style="color:brown">{{ need.title }}</h4>
+<hr>
+<h5 style="color:blue">İçerik: <br>
+    <h6>{{ need.content }}</h6>
+</h5> 
+<hr>
+<h5 style="color:blue">Adres: <br>
+<h6>{{ need.address }}</h6>
+</h5>
+<hr>
+<h5 style="color:blue">Email: <br>
+<h6>{{ need.email }}</h6>
+</h5>
+<hr>
+<h5 style="color:blue">Telefon Numarası: <br>
+<h6>{{ need.phone }}</h6>
+</h5>
+<hr>
+<h5 style="color:blue">Kategori: <br>
+<h6>{{ need.category }}</h6>
+</h5>
+<hr>
+<h5 style="color:blue">IBAN: <br>
+<h6>{{ need.iban }}</h6>
+</h5>
 
 {% else %}
 
