@@ -9,9 +9,9 @@
     <small>Hoşgeldin, {{ session['email'] }}</small>
     <hr>
 
-    <a href="/addneed" class="btn btn-danger">İhtiyaç Ekle</a>
     <br><br>
-    {% if needs %}
+
+    {% if need %}
 
     {% for need in needs %}
     
@@ -30,7 +30,6 @@
             <th scope="row">{{ need.id }}</th>
             <td><a href="/need/{{ need.id}}">{{ need.title }}</a></td>
             <td>{{ need.created_date }}</td>
-            <td><a href="/edit/{{ need.id }}" class="btn btn-danger">Güncelle</a></td>
             <td><a href="/delete/{{ need.id }}" class="btn btn-danger">Sil</a></td>
           </tr>
         </tbody>
@@ -39,9 +38,11 @@
 
     {% else %}
 
-        <div class="alert alert-danger">
-            Herhangi bir ihtiyaç bulunmuyor.
-        </div>
+    <div class="alert alert-danger">
+        Herhangi bir ihtiyaç bulunmuyor.
+    </div>
+    <br>
+    <a href="/addneed" class="btn btn-danger">İhtiyaç Ekle</a>
 
     {% endif %}
 

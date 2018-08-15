@@ -36,13 +36,13 @@ class User(db.Model):
 
 class Need(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), unique=True)
-    content = db.Column(db.String(1000), unique=True)
-    address = db.Column(db.String(1000), unique=True)
-    email = db.Column(db.String(45), unique=True)
-    phone = db.Column(db.Integer, unique=True)
-    category = db.Column(db.String(40), unique=True)
-    iban = db.Column(db.String(50), unique=True)
+    title = db.Column(db.String(100))
+    content = db.Column(db.String(1000))
+    address = db.Column(db.String(1000))
+    email = db.Column(db.String(45))
+    phone = db.Column(db.Integer)
+    category = db.Column(db.String(40))
+    iban = db.Column(db.String(50))
     created_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
 # İhtiyaç Formu
@@ -84,11 +84,8 @@ def about():
 
 @app.route('/need/<string:id>')
 def need(id):
-    need = Need.query.filter_by(id=id)
-    if session['logged_in']:
-        return render_template('need.html', need = need)
-    else:
-        return render_template('need.html')
+    need = Need.query.filter_by(id=id).first()
+    return render_template('need.html', need = need)
 
 @app.route('/dashboard')
 @login_required
@@ -168,6 +165,16 @@ def register():
 def logout():
     session.clear()
     return redirect(url_for('home'))
+
+# İhtiyaç silme
+
+@app.route('/delete/<string:id>')
+@login_required
+def delete(id):
+    need = Need.query.filter_by(id = id).first()
+    db.session.delete(need)
+    db.session.commit()
+    return redirect(url_for('dashboard'))
 
 if __name__ == '__main__':
     db.create_all()
