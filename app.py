@@ -5,6 +5,7 @@ from functools import wraps
 from datetime import datetime
 from flask import send_from_directory
 from forms import LoginForm, RegisterForm, NeedForm
+import os
 
 # Kullanıcı Giriş Decorator'ı
 
@@ -56,7 +57,8 @@ def about():
 @app.route('/need/<string:id>')
 def need(id):
     need = Need.query.filter_by(id = id).first()
-    return render_template('need.html', need = need)
+    user = User.query.filter_by(id = id).first()
+    return render_template('need.html', need = need, user = user)
 
 @app.route('/dashboard')
 @login_required
@@ -117,7 +119,7 @@ def login():
 
 # Kayıt Olma
 
-@app.route('/register', methods = ['GET', 'POST'])
+@app.route('/register/', methods = ['GET', 'POST'])
 def register():
     form = RegisterForm(request.form)
     if request.method == 'POST' and form.validate():

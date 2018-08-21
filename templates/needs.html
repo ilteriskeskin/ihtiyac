@@ -14,7 +14,6 @@
 <table class="table table-striped table-dark">
     <thead>
       <tr>
-        <th scope="col">id</th>
         <th class="" scope="col">Başlık</th>
         <th class="bg-danger" scope="col">Kategori</th>
         <th class="bg-success" scope="col">Tarih</th>
@@ -23,7 +22,6 @@
     <tbody>
     {% for need in needs %}
       <tr>
-        <th scope="row">{{ need.id }}</th>
         <td class="" > <a href="/need/{{ need.id }}">{{ need.title }}</a></td>
         <td class="bg-danger" >{{ need.category }}</td>
         <td class="bg-success">{{ need.created_date }}</td>
